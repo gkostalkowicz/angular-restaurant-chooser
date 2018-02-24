@@ -1,0 +1,11 @@
+<i>{{restaurant.name}}</i><br>
+
+<span *ngIf="restaurant.votes.length == 0">No votes yet - be the first one to vote!</span>
+<span *ngIf="restaurant.votes.length == 1">{{restaurant.votes.length}} vote:</span>
+<span *ngIf="restaurant.votes.length > 1">{{restaurant.votes.length}} votes:</span>
+
+<span *ngIf="restaurant.votes.length <= 2">{{joinVotes()}}</span>
+<span *ngIf="restaurant.votes.length > 2">
+  <span *ngIf="!expanded">{{joinVotes(2)}}, ... <a href (click)="toggleExpandedVotes()">show all</a></span>
+  <span *ngIf="expanded">{{joinVotes()}} <a href (click)="toggleExpandedVotes()">show less</a></span>
+</span>
