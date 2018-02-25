@@ -1,4 +1,4 @@
-package com.gk.restaurants.restaurants;
+package com.gk.restaurants.users;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Restaurant {
+public class User {
 
     @Id
     private Long id;

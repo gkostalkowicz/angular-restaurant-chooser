@@ -1,17 +1,19 @@
-package com.gk.restaurants.restaurants;
+package com.gk.restaurants.votes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Restaurant {
+public class Vote {
 
     @Id
-    private Long id;
+    private Long userId;
 
-    private String name;
+    private List<Long> chosenRestaurantIds;
 }

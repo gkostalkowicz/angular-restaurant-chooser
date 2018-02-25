@@ -1,5 +1,6 @@
 package com.gk.restaurants.restaurants;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -8,10 +9,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/restaurants")
+@RequiredArgsConstructor(onConstructor=@__(@Autowired))
 public class RestaurantController {
 
-    @Autowired
-    private RestaurantRepository restaurantRepository;
+    private final RestaurantRepository restaurantRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     private List<Restaurant> getAll() {
@@ -20,7 +21,6 @@ public class RestaurantController {
 
     @RequestMapping(method = RequestMethod.POST)
     private void create(@RequestBody Restaurant restaurant) {
-        // generate next ID - not a perfect solution
         Restaurant newestRestaurant = restaurantRepository.findTopByOrderByIdDesc();
         restaurant.setId(newestRestaurant == null ? 0 : newestRestaurant.getId() + 1);
 
