@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RestaurantWithVotes } from '../restaurant-with-votes.model';
 import { Http, Response } from '@angular/http';
+import { RestaurantWithVotes } from '../restaurant-with-votes.model';
 
 @Component({
   selector: 'app-overview-screen',
@@ -18,14 +18,11 @@ export class OverviewScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.updateRestaurants();
-  }
-
-  updateRestaurants() {
     this.http
       .get('http://localhost:8080/votes')
       .subscribe((response: Response) => {
         this.restaurants = response.json();
+        this.restaurants.sort((r1, r2) => r2.chosenBy.length - r1.chosenBy.length);
       });
   }
 }

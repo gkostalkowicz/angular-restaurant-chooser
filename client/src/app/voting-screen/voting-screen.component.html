@@ -1,2 +1,17 @@
 <h1>Choose the restaurants for today</h1>
+
+<div *ngIf="!loaded">
+  <img src="assets/images/spinner.svg" alt="Loading...">
+</div>
+
+<div *ngIf="loaded">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+    <div *ngFor="let restaurant of restaurants">
+      <input type="checkbox" id="restaurant_{{restaurant.id}}" name="restaurant_{{restaurant.id}}" ngModel>
+      <label for="restaurant_{{restaurant.id}}">{{restaurant.name}}</label>
+    </div>
+    <button type="submit">Vote</button>
+  </form>
+</div>
+
 <a [routerLink]="['/overview']" style="font-size: 2em">Cancel</a>

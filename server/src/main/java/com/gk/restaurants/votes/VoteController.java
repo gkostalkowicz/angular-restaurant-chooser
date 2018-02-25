@@ -9,6 +9,7 @@ import com.google.common.collect.SetMultimap;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +30,7 @@ public class VoteController {
     private final UserRepository userRepository;
 
     @RequestMapping(value = "/vote", method = RequestMethod.POST)
-    public void vote(List<Long> chosenRestaurants) {
+    public void vote(@RequestBody List<Long> chosenRestaurants) {
         Vote vote = new Vote();
         vote.setUserId(1L); // TODO hardcoded
         vote.setChosenRestaurantIds(chosenRestaurants);

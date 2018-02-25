@@ -1,8 +1,8 @@
 <i>{{restaurant.restaurant.name}}</i><br>
 
 <span *ngIf="restaurant.chosenBy.length == 0">No votes yet - be the first one to vote!</span>
-<span *ngIf="restaurant.chosenBy.length == 1">{{restaurant.votes.length}} vote:</span>
-<span *ngIf="restaurant.chosenBy.length > 1">{{restaurant.votes.length}} votes:</span>
+<span *ngIf="restaurant.chosenBy.length == 1">{{restaurant.chosenBy.length}} vote:</span>
+<span *ngIf="restaurant.chosenBy.length > 1">{{restaurant.chosenBy.length}} votes:</span>
 
 <span *ngIf="restaurant.chosenBy.length <= 2">{{joinVotes()}}</span>
 <span *ngIf="restaurant.chosenBy.length > 2">
