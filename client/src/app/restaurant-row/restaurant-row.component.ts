@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Restaurant } from '../restaurant.model';
+import { RestaurantWithVotes } from '../restaurant-with-votes.model';
 
 @Component({
   selector: 'app-restaurant-row',
@@ -8,7 +8,7 @@ import { Restaurant } from '../restaurant.model';
 })
 export class RestaurantRowComponent implements OnInit {
 
-  @Input() restaurant: Restaurant;
+  @Input() restaurant: RestaurantWithVotes;
 
   expanded: boolean;
 
@@ -18,8 +18,8 @@ export class RestaurantRowComponent implements OnInit {
   }
 
   joinVotes(count?: number): string {
-    return this.restaurant.votes
-      .slice(0, count ? count : this.restaurant.votes.length)
+    return this.restaurant.chosenBy
+      .slice(0, count ? count : this.restaurant.chosenBy.length)
       .join(', ');
   }
 

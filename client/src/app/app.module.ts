@@ -5,11 +5,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { RestaurantRowComponent } from './restaurant-row/restaurant-row.component';
+import { OverviewScreenComponent } from './overview-screen/overview-screen.component';
+import { VotingScreenComponent } from './voting-screen/voting-screen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RestaurantRowComponent
+    RestaurantRowComponent,
+    OverviewScreenComponent,
+    VotingScreenComponent
   ],
   imports: [
     BrowserModule,
