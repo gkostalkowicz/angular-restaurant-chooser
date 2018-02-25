@@ -1,17 +1,17 @@
-package com.gk.restaurants;
+package com.gk.restaurants.restaurants;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import org.springframework.data.annotation.Id;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Restaurant {
 
-    private String name;
+    @Id
+    private Long id;
 
-    private List<String> votes;
+    private String name;
 }
