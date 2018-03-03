@@ -1,3 +1,9 @@
-<p>
-  manage-restaurants-create-screen works!
-</p>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+  <div>
+    <label for="name">Name:</label><br>
+    <input id="name" name="name" [formControl]="formGroup.controls['name']" [class.error]="!name.valid && name.touched">
+    <div *ngIf="name.hasError('required') && name.touched">This field is required!</div>
+  </div>
+
+  <div><button type="submit" [disabled]="!formGroup.valid">Vote</button></div>
+</form>
