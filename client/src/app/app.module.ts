@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 import { RestaurantRowComponent } from './restaurant-row/restaurant-row.component';
 import { OverviewScreenComponent } from './overview-screen/overview-screen.component';
 import { VotingScreenComponent } from './voting-screen/voting-screen.component';
+import { ManageRestaurantsScreenComponent } from './manage-restaurants-screen/manage-restaurants-screen.component';
 import { ManageRestaurantsOverviewScreenComponent } from './manage-restaurants-overview-screen/manage-restaurants-overview-screen.component';
+import { ManageRestaurantsCreateScreenComponent } from './manage-restaurants-create-screen/manage-restaurants-create-screen.component';
 
 import { RestService } from './rest.service';
 
@@ -16,7 +18,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'overview', pathMatch: 'full' },
   { path: 'overview', component: OverviewScreenComponent },
   { path: 'vote', component: VotingScreenComponent },
-  { path: 'admin', component: ManageRestaurantsOverviewScreenComponent }
+  { path: 'admin', component: ManageRestaurantsScreenComponent, children: [
+    { path: '', component: ManageRestaurantsOverviewScreenComponent },
+    { path: 'create', component: ManageRestaurantsCreateScreenComponent }
+  ]}
 ]
 
 @NgModule({
@@ -25,7 +30,9 @@ const routes: Routes = [
     RestaurantRowComponent,
     OverviewScreenComponent,
     VotingScreenComponent,
-    ManageRestaurantsOverviewScreenComponent
+    ManageRestaurantsScreenComponent,
+    ManageRestaurantsOverviewScreenComponent,
+    ManageRestaurantsCreateScreenComponent
   ],
   imports: [
     BrowserModule,

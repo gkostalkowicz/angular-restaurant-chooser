@@ -1,5 +1,5 @@
 <h1>Manage restaurants</h1>
-<a href style="font-size: 1.5em">Add a new restaurant</a>
+<a [routerLink]="['./create']" style="font-size: 1.5em">Add a new restaurant</a>
 <div *ngIf="!restaurants.length">No restaurants yet!</div>
 <div *ngIf="restaurants.length">
 <table>
