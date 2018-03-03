@@ -15,10 +15,25 @@ export class ManageRestaurantsOverviewScreenComponent implements OnInit {
   constructor(private restService: RestService) { }
 
   ngOnInit() {
+    this.fetchRestaurants();
+  }
+
+  fetchRestaurants() {
     this.restService
       .get('/restaurants')
       .subscribe((response: Response) => {
         this.restaurants = response.json();
       });
+  }
+
+  confirmAndRemove(restaurant: Restaurant) {
+    if (confirm(`Remove restaurant "${restaurant.name}"?`)) {
+      this.restService
+        .delete('/restaurants/' + restaurant.id)
+        .subscribe(() => {
+          this.fetchRestaurants();
+        });
+    }
+    return false;
   }
 }

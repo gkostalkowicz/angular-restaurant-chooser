@@ -27,7 +27,7 @@ export class ManageRestaurantsCreateScreenComponent implements OnInit {
   onSubmit(formGroup: FormGroup) {
     this.restService
       .post('/restaurants', {name: formGroup['name']})
-      .subscribe((response: Response) => {
+      .subscribe(() => {
         this.router.navigate(['..'], { relativeTo: this.route });
       });
   }

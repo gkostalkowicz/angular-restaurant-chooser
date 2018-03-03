@@ -16,4 +16,8 @@ export class RestService {
   post(endpoint: string, data: any): Observable<Response> {
     return this.http.post(BASE_URL + endpoint, data);
   }
+
+  delete(endpoint: string): Observable<Response> {
+      return this.http.delete(BASE_URL + endpoint);
+    }
 }

@@ -22,7 +22,7 @@ export class RestaurantRowComponent implements OnInit {
   }
 
   toggleExpandedVotes() {
-    this.expanded = !this.expanded
+    this.expanded = !this.expanded;
     return false;
   }
 }

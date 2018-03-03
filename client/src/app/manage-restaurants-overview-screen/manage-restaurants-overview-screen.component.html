@@ -11,7 +11,7 @@
   <tr *ngFor="let restaurant of restaurants">
     <td>{{restaurant.name}}</td>
     <td><a href>Edit</a></td>
-    <td><a href>Remove</a></td>
+    <td><a href (click)="confirmAndRemove(restaurant)">Remove</a></td>
   </tr>
 </table>
 </div>
