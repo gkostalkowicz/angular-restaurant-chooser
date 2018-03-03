@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RestaurantWithVotes } from '../restaurant-with-votes.model';
 
 @Component({
-  selector: 'app-restaurant-row',
+  selector: '[app-restaurant-row]',
   templateUrl: './restaurant-row.component.html',
   styleUrls: ['./restaurant-row.component.css']
 })

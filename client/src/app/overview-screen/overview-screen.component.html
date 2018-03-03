@@ -1,5 +1,5 @@
-<h1>Overview</h1>
-<ul>
-  <li *ngFor="let restaurant of restaurants"><app-restaurant-row [restaurant]="restaurant"></app-restaurant-row></li>
-</ul>
-<p><a [routerLink]="['/vote']" style="font-size: 2em">Vote now!</a></p>
+<h1>Current votes</h1>
+<table>
+  <tr app-restaurant-row *ngFor="let restaurant of restaurants" [restaurant]="restaurant"></tr>
+</table>
+<div class="link"><a [routerLink]="['/vote']">Vote now!</a></div>

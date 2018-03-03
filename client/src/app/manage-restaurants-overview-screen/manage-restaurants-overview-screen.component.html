@@ -1,12 +1,10 @@
 <h1>Manage restaurants</h1>
-<a [routerLink]="['create']" style="font-size: 1.5em">Add a new restaurant</a>
+
 <div *ngIf="!restaurants.length">No restaurants yet!</div>
 <div *ngIf="restaurants.length">
 <table>
   <tr>
-    <th>Restaurant</th>
-    <th></th>
-    <th></th>
+    <th colspan="3">Restaurants</th>
   </tr>
   <tr *ngFor="let restaurant of restaurants">
     <td>{{restaurant.name}}</td>
@@ -15,3 +13,5 @@
   </tr>
 </table>
 </div>
+
+<div class="link"><a [routerLink]="['create']">Add a new restaurant</a></div>
