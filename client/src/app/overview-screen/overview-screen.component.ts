@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { RestaurantWithVotes } from '../restaurant-with-votes.model';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-overview-screen',
@@ -11,15 +12,11 @@ export class OverviewScreenComponent implements OnInit {
 
   restaurants: RestaurantWithVotes[];
 
-  private http: Http;
-
-  constructor(http: Http) {
-    this.http = http;
-  }
+  constructor(private restService: RestService) { }
 
   ngOnInit() {
-    this.http
-      .get('http://localhost:8080/votes')
+    this.restService
+      .get('/votes')
       .subscribe((response: Response) => {
         this.restaurants = response.json();
         this.restaurants.sort((r1, r2) => r2.chosenBy.length - r1.chosenBy.length);

@@ -9,13 +9,11 @@ import { RestaurantWithVotes } from '../restaurant-with-votes.model';
 export class RestaurantRowComponent implements OnInit {
 
   @Input() restaurant: RestaurantWithVotes;
-
   expanded: boolean;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   joinVotes(count?: number): string {
     return this.restaurant.chosenBy
