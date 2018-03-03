@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { RestService } from './rest.service';
+
 import { AppComponent } from './app.component';
 import { RestaurantRowComponent } from './restaurant-row/restaurant-row.component';
 import { OverviewScreenComponent } from './overview-screen/overview-screen.component';
@@ -11,8 +13,7 @@ import { VotingScreenComponent } from './voting-screen/voting-screen.component';
 import { ManageRestaurantsScreenComponent } from './manage-restaurants-screen/manage-restaurants-screen.component';
 import { ManageRestaurantsOverviewScreenComponent } from './manage-restaurants-overview-screen/manage-restaurants-overview-screen.component';
 import { ManageRestaurantsCreateScreenComponent } from './manage-restaurants-create-screen/manage-restaurants-create-screen.component';
-
-import { RestService } from './rest.service';
+import { ManageRestaurantsEditScreenComponent } from './manage-restaurants-edit-screen/manage-restaurants-edit-screen.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'vote', component: VotingScreenComponent },
   { path: 'admin', component: ManageRestaurantsScreenComponent, children: [
     { path: '', component: ManageRestaurantsOverviewScreenComponent },
-    { path: 'create', component: ManageRestaurantsCreateScreenComponent }
+    { path: 'create', component: ManageRestaurantsCreateScreenComponent },
+    { path: 'edit/:id', component: ManageRestaurantsEditScreenComponent }
   ]}
 ]
 
@@ -32,7 +34,8 @@ const routes: Routes = [
     VotingScreenComponent,
     ManageRestaurantsScreenComponent,
     ManageRestaurantsOverviewScreenComponent,
-    ManageRestaurantsCreateScreenComponent
+    ManageRestaurantsCreateScreenComponent,
+    ManageRestaurantsEditScreenComponent
   ],
   imports: [
     BrowserModule,

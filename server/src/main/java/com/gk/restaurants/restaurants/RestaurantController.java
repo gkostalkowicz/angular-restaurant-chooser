@@ -3,6 +3,7 @@ package com.gk.restaurants.restaurants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,12 @@ public class RestaurantController {
     @RequestMapping(method = RequestMethod.GET)
     private List<Restaurant> getAll() {
         return restaurantRepository.findAll();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    private ResponseEntity<Restaurant> get(@PathVariable("id") Long id) {
+        Restaurant restaurant = restaurantRepository.findOne(id);
+        return restaurant == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(restaurant);
     }
 
     @RequestMapping(method = RequestMethod.POST)

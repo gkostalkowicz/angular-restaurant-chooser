@@ -1,4 +1,4 @@
-<h1>Add a new restaurant</h1>
+<h1>Edit "{{restaurant.name}}"</h1>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
   <div>
     <label for="name">Name:</label><br>
@@ -6,5 +6,5 @@
     <div *ngIf="name.hasError('required') && name.touched">This field is required!</div>
   </div>
 
-  <div><button type="submit" [disabled]="!formGroup.valid">Add</button></div>
+  <div><button type="submit" [disabled]="!formGroup.valid">Update</button></div>
 </form>
