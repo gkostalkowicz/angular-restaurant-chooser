@@ -14,6 +14,7 @@ import { ManageRestaurantsScreenComponent } from './manage-restaurants-screen/ma
 import { ManageRestaurantsOverviewScreenComponent } from './manage-restaurants-overview-screen/manage-restaurants-overview-screen.component';
 import { ManageRestaurantsCreateScreenComponent } from './manage-restaurants-create-screen/manage-restaurants-create-screen.component';
 import { ManageRestaurantsEditScreenComponent } from './manage-restaurants-edit-screen/manage-restaurants-edit-screen.component';
+import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -35,7 +36,8 @@ const routes: Routes = [
     ManageRestaurantsScreenComponent,
     ManageRestaurantsOverviewScreenComponent,
     ManageRestaurantsCreateScreenComponent,
-    ManageRestaurantsEditScreenComponent
+    ManageRestaurantsEditScreenComponent,
+    RestaurantFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, AbstractControl, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Restaurant } from '../restaurant.model';
-import { RestService  } from '../rest.service';
+import { RestService } from '../rest.service';
+import { RestaurantFormComponent } from '../restaurant-form/restaurant-form.component';
 
 @Component({
   selector: 'app-manage-restaurants-edit-screen',
@@ -12,25 +12,20 @@ import { RestService  } from '../rest.service';
 })
 export class ManageRestaurantsEditScreenComponent implements OnInit {
 
-  formGroup: FormGroup;
+  @ViewChild(RestaurantFormComponent) restaurantForm: RestaurantFormComponent;
   restaurant: Restaurant;
-  name: AbstractControl;
   id: number;
 
-  constructor(builder: FormBuilder, private restService: RestService, private router: Router, private route: ActivatedRoute) {
-    this.formGroup = builder.group({
-      'name': ['', Validators.required]
-    });
-    this.name = this.formGroup.controls['name'];
-
+  constructor(private restService: RestService, private router: Router, private route: ActivatedRoute) {
     route.params.subscribe(params => {
       this.id = params['id'];
+
       this.restService
         .get('/restaurants/' + this.id)
         .subscribe((res: Response) => {
           let restaurant: Restaurant = res.json();
           this.restaurant = restaurant;
-          this.name.setValue(restaurant.name);
+          this.restaurantForm.setRestaurant(restaurant);
         });
     });
   }
@@ -38,9 +33,9 @@ export class ManageRestaurantsEditScreenComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(formGroup: FormGroup) {
+  onSubmit(restaurantJson: any) {
     this.restService
-      .post('/restaurants/' + this.id, {name: formGroup['name']})
+      .post('/restaurants/' + this.id, restaurantJson)
       .subscribe(() => {
         this.router.navigate(['../..'], { relativeTo: this.route });
       });

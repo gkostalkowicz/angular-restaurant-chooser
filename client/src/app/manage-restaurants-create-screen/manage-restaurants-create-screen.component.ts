@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, AbstractControl, Validators } from '@angular/forms';
 import { Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RestService  } from '../rest.service';
@@ -11,22 +10,15 @@ import { RestService  } from '../rest.service';
 })
 export class ManageRestaurantsCreateScreenComponent implements OnInit {
 
-  formGroup: FormGroup;
-  name: AbstractControl;
-
-  constructor(builder: FormBuilder, private restService: RestService, private router: Router, private route: ActivatedRoute) {
-    this.formGroup = builder.group({
-      'name': ['', Validators.required]
-    });
-    this.name = this.formGroup.controls['name'];
+  constructor(private restService: RestService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
   }
 
-  onSubmit(formGroup: FormGroup) {
+  onSubmit(restaurantJson: any) {
     this.restService
-      .post('/restaurants', {name: formGroup['name']})
+      .post('/restaurants', restaurantJson)
       .subscribe(() => {
         this.router.navigate(['..'], { relativeTo: this.route });
       });

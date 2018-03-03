@@ -1,10 +1,2 @@
 <h1>Edit "{{restaurant.name}}"</h1>
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-  <div>
-    <label for="name">Name:</label><br>
-    <input id="name" name="name" [formControl]="formGroup.controls['name']" [class.error]="!name.valid && name.touched">
-    <div *ngIf="name.hasError('required') && name.touched">This field is required!</div>
-  </div>
-
-  <div><button type="submit" [disabled]="!formGroup.valid">Update</button></div>
-</form>
+<app-restaurant-form [submitButtonLabel]="'Update'" (save)="onSubmit($event)"></app-restaurant-form>
