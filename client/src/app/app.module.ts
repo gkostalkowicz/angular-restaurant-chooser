@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RestService } from './rest.service';
 import { RestaurantService } from './restaurant.service';
+import { UserService } from './user.service';
 import { VoteService } from './vote.service';
 
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { ManageRestaurantsOverviewScreenComponent } from './manage-restaurants-o
 import { ManageRestaurantsCreateScreenComponent } from './manage-restaurants-create-screen/manage-restaurants-create-screen.component';
 import { ManageRestaurantsEditScreenComponent } from './manage-restaurants-edit-screen/manage-restaurants-edit-screen.component';
 import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
+import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -39,7 +41,8 @@ const routes: Routes = [
     ManageRestaurantsOverviewScreenComponent,
     ManageRestaurantsCreateScreenComponent,
     ManageRestaurantsEditScreenComponent,
-    RestaurantFormComponent
+    RestaurantFormComponent,
+    UserDropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ const routes: Routes = [
   providers: [
     RestService,
     RestaurantService,
+    UserService,
     VoteService
   ],
   bootstrap: [AppComponent]

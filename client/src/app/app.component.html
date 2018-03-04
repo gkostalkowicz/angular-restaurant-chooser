@@ -1,2 +1,6 @@
-<div class="top-menu"><a [routerLink]="['/overview']">Overview</a> | <a [routerLink]="['/admin']">Manage restaurants</a></div>
+<div class="top-menu">
+  <a [routerLink]="['/overview']">Overview</a> |
+  <a [routerLink]="['/admin']">Manage restaurants</a> |
+  Current user: <app-user-dropdown></app-user-dropdown>
+</div>
 <router-outlet></router-outlet>

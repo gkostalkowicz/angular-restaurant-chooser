@@ -1,0 +1,3 @@
+<select (change)="onSelect($event.target.value)">
+  <option *ngFor="let user of users" value="{{user.id}}">{{user.name}}</option>
+</select>

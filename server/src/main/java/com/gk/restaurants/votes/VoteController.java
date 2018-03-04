@@ -30,10 +30,7 @@ public class VoteController {
     private final UserRepository userRepository;
 
     @RequestMapping(value = "/vote", method = RequestMethod.POST)
-    public void vote(@RequestBody List<Long> chosenRestaurants) {
-        Vote vote = new Vote();
-        vote.setUserId(1L); // TODO hardcoded
-        vote.setChosenRestaurantIds(chosenRestaurants);
+    public void vote(@RequestBody Vote vote) {
         voteRepository.save(vote);
     }
 

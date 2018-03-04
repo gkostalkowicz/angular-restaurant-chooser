@@ -11,13 +11,11 @@ export class RestaurantService {
   constructor(private restService: RestService) { }
 
   getAll(): Observable<Restaurant[]> {
-    return this.restService.get('/restaurants')
-      .map((response: Response) => response.json());
+    return this.restService.get('/restaurants').map((response: Response) => response.json());
   }
 
   getById(id: number): Observable<Restaurant> {
-    return this.restService.get('/restaurants/' + id)
-        .map((response: Response) => response.json());
+    return this.restService.get('/restaurants/' + id).map((response: Response) => response.json());
   }
 
   create(restaurant: Restaurant): Observable<any> {

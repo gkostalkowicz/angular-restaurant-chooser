@@ -21,7 +21,7 @@ public class RestaurantController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    private ResponseEntity<Restaurant> get(@PathVariable("id") Long id) {
+    private ResponseEntity<Restaurant> getById(@PathVariable("id") Long id) {
         Restaurant restaurant = restaurantRepository.findOne(id);
         return restaurant == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(restaurant);
     }
