@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Response } from '@angular/http';
-import { RestService } from '../rest.service';
 import { Restaurant } from '../restaurant.model';
+import { RestaurantService } from '../restaurant.service';
 
 @Component({
   selector: 'app-manage-restaurants-overview-screen',
@@ -12,27 +11,20 @@ export class ManageRestaurantsOverviewScreenComponent implements OnInit {
 
   restaurants: Restaurant[] = [];
 
-  constructor(private restService: RestService) { }
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
     this.fetchRestaurants();
   }
 
   fetchRestaurants() {
-    this.restService
-      .get('/restaurants')
-      .subscribe((response: Response) => {
-        this.restaurants = response.json();
-      });
+    this.restaurantService.getAll().subscribe((restaurants: Restaurant[]) => this.restaurants = restaurants);
   }
 
   confirmAndRemove(restaurant: Restaurant) {
     if (confirm(`Remove restaurant "${restaurant.name}"?`)) {
-      this.restService
-        .delete('/restaurants/' + restaurant.id)
-        .subscribe(() => {
-          this.fetchRestaurants();
-        });
+      this.restaurantService.delete(restaurant.id)
+        .subscribe(() => this.fetchRestaurants());
     }
     return false;
   }

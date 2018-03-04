@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RestService  } from '../rest.service';
+import { RestaurantService } from '../restaurant.service';
 
 @Component({
   selector: 'app-manage-restaurants-create-screen',
@@ -10,17 +9,14 @@ import { RestService  } from '../rest.service';
 })
 export class ManageRestaurantsCreateScreenComponent implements OnInit {
 
-  constructor(private restService: RestService, private router: Router, private route: ActivatedRoute) {
+  constructor(private restaurantService: RestaurantService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
   }
 
   onSubmit(restaurantJson: any) {
-    this.restService
-      .post('/restaurants', restaurantJson)
-      .subscribe(() => {
-        this.router.navigate(['..'], { relativeTo: this.route });
-      });
+    this.restaurantService.create(restaurantJson)
+      .subscribe(() => this.router.navigate(['..'], { relativeTo: this.route }));
   }
 }

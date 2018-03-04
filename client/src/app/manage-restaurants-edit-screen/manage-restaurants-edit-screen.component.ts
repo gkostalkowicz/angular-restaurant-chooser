@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Restaurant } from '../restaurant.model';
-import { RestService } from '../rest.service';
+import { RestaurantService } from '../restaurant.service';
 import { RestaurantFormComponent } from '../restaurant-form/restaurant-form.component';
 
 @Component({
@@ -16,14 +15,12 @@ export class ManageRestaurantsEditScreenComponent implements OnInit {
   restaurant: Restaurant;
   id: number;
 
-  constructor(private restService: RestService, private router: Router, private route: ActivatedRoute) {
+  constructor(private restaurantService: RestaurantService, private router: Router, private route: ActivatedRoute) {
     route.params.subscribe(params => {
       this.id = params['id'];
 
-      this.restService
-        .get('/restaurants/' + this.id)
-        .subscribe((res: Response) => {
-          let restaurant: Restaurant = res.json();
+      this.restaurantService.getById(this.id)
+        .subscribe((restaurant: Restaurant) => {
           this.restaurant = restaurant;
           this.restaurantForm.setRestaurant(restaurant);
         });
@@ -34,10 +31,7 @@ export class ManageRestaurantsEditScreenComponent implements OnInit {
   }
 
   onSubmit(restaurantJson: any) {
-    this.restService
-      .post('/restaurants/' + this.id, restaurantJson)
-      .subscribe(() => {
-        this.router.navigate(['../..'], { relativeTo: this.route });
-      });
+    this.restaurantService.update(this.id, restaurantJson)
+      .subscribe(() => this.router.navigate(['../..'], { relativeTo: this.route }));
   }
 }

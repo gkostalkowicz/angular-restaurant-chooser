@@ -3,7 +3,8 @@ import { Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { Restaurant } from '../restaurant.model';
-import { RestService } from '../rest.service';
+import { RestaurantService } from '../restaurant.service';
+import { VoteService } from '../vote.service';
 
 @Component({
   selector: 'app-voting-screen',
@@ -15,13 +16,12 @@ export class VotingScreenComponent implements OnInit {
   loaded: boolean;
   restaurants: Restaurant[];
 
-  constructor(private restService: RestService, private router: Router) { }
+  constructor(private restaurantService: RestaurantService, private voteService: VoteService, private router: Router) { }
 
   ngOnInit() {
-    this.restService
-      .get('/restaurants')
-      .subscribe((response: Response) => {
-        this.restaurants = response.json();
+    this.restaurantService.getAll()
+      .subscribe((restaurants: Restaurant[]) => {
+        this.restaurants = restaurants;
         this.loaded = true;
       });
   }
@@ -35,10 +35,7 @@ export class VotingScreenComponent implements OnInit {
       }
     });
 
-    this.restService
-      .post('/vote', chosenIds)
-      .subscribe((res: Response) => {
-        this.router.navigate(['/overview'])
-      });
+    this.voteService.vote(chosenIds)
+      .subscribe(() => this.router.navigate(['/overview']));
   }
 }

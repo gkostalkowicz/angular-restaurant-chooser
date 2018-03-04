@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RestService } from './rest.service';
+import { RestaurantService } from './restaurant.service';
+import { VoteService } from './vote.service';
 
 import { AppComponent } from './app.component';
 import { RestaurantRowComponent } from './restaurant-row/restaurant-row.component';
@@ -47,7 +49,9 @@ const routes: Routes = [
     ReactiveFormsModule
   ],
   providers: [
-    RestService
+    RestService,
+    RestaurantService,
+    VoteService
   ],
   bootstrap: [AppComponent]
 })
