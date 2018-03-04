@@ -1,0 +1,27 @@
+/* 1 */
+{
+    "_id" : NumberLong(1),
+    "_class" : "com.gk.restaurants.restaurants.Restaurant",
+    "name" : "Capuccino"
+}
+
+/* 2 */
+{
+    "_id" : NumberLong(2),
+    "_class" : "com.gk.restaurants.restaurants.Restaurant",
+    "name" : "Vietnamese"
+}
+
+/* 3 */
+{
+    "_id" : NumberLong(3),
+    "_class" : "com.gk.restaurants.restaurants.Restaurant",
+    "name" : "Indian"
+}
+
+/* 4 */
+{
+    "_id" : NumberLong(4),
+    "_class" : "com.gk.restaurants.restaurants.Restaurant",
+    "name" : "Market"
+}

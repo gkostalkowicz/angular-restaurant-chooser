@@ -1,0 +1,34 @@
+/* 1 */
+{
+    "_id" : NumberLong(1),
+    "_class" : "com.gk.restaurants.users.User",
+    "name" : "Greg"
+}
+
+/* 2 */
+{
+    "_id" : NumberLong(2),
+    "_class" : "com.gk.restaurants.users.User",
+    "name" : "Peter"
+}
+
+/* 3 */
+{
+    "_id" : NumberLong(3),
+    "_class" : "com.gk.restaurants.users.User",
+    "name" : "Anna"
+}
+
+/* 4 */
+{
+    "_id" : NumberLong(4),
+    "_class" : "com.gk.restaurants.users.User",
+    "name" : "Steven"
+}
+
+/* 5 */
+{
+    "_id" : NumberLong(5),
+    "_class" : "com.gk.restaurants.users.User",
+    "name" : "Sarah"
+}
